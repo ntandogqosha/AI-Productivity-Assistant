@@ -142,3 +142,73 @@
     color: var(--color-foreground);
   }
 }
+
+/* ── AI Productivity Assistant design system ───────────────────────── */
+
+:root {
+  --brand-from: oklch(0.55 0.22 285);
+  --brand-via: oklch(0.52 0.2 268);
+  --brand-to: oklch(0.6 0.18 245);
+  --gradient-brand: linear-gradient(135deg, var(--brand-from), var(--brand-via) 55%, var(--brand-to));
+  --feature-email: oklch(0.53 0.22 262);
+  --feature-summary: oklch(0.68 0.15 162);
+  --feature-planner: oklch(0.76 0.16 70);
+  --feature-research: oklch(0.62 0.22 295);
+  --feature-chat: oklch(0.63 0.24 355);
+  --glass-bg: oklch(1 0 0 / 62%);
+  --glass-border: oklch(1 0 0 / 55%);
+  --shadow-glass: 0 18px 45px -20px oklch(0.35 0.12 275 / 45%);
+}
+
+.dark {
+  --glass-bg: oklch(0.24 0.045 275 / 60%);
+  --glass-border: oklch(1 0 0 / 12%);
+}
+
+@theme inline {
+  --color-email: var(--feature-email);
+  --color-summary: var(--feature-summary);
+  --color-planner: var(--feature-planner);
+  --color-research: var(--feature-research);
+  --color-chat: var(--feature-chat);
+  --color-brand-from: var(--brand-from);
+  --color-brand-to: var(--brand-to);
+  --font-display: "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: "DM Sans", ui-sans-serif, system-ui, sans-serif;
+}
+
+@utility gradient-brand {
+  background-image: var(--gradient-brand);
+}
+
+@utility gradient-text {
+  background-image: var(--gradient-brand);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+@utility glass {
+  background-color: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  backdrop-filter: blur(16px) saturate(140%);
+  box-shadow: var(--shadow-glass);
+}
+
+@utility page-aurora {
+  position: relative;
+  background:
+    radial-gradient(60% 55% at 12% 4%, oklch(0.6 0.2 285 / 22%), transparent 70%),
+    radial-gradient(55% 50% at 92% 10%, oklch(0.62 0.18 245 / 20%), transparent 70%),
+    radial-gradient(50% 45% at 60% 100%, oklch(0.66 0.2 330 / 14%), transparent 70%),
+    var(--color-background);
+}
+
+@layer base {
+  body {
+    font-family: var(--font-sans);
+  }
+  h1, h2, h3, .font-display {
+    font-family: var(--font-display);
+  }
+}
