@@ -14,7 +14,93 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      generations: {
+        Row: {
+          created_at: string
+          id: string
+          input: string | null
+          kind: string
+          output: string | null
+          reported: boolean
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          input?: string | null
+          kind: string
+          output?: string | null
+          reported?: boolean
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          input?: string | null
+          kind?: string
+          output?: string | null
+          reported?: boolean
+          user_id?: string
+        }
+        Relationships: []
+      }
+      profiles: {
+        Row: {
+          avatar_url: string | null
+          created_at: string
+          full_name: string | null
+          id: string
+          updated_at: string
+        }
+        Insert: {
+          avatar_url?: string | null
+          created_at?: string
+          full_name?: string | null
+          id: string
+          updated_at?: string
+        }
+        Update: {
+          avatar_url?: string | null
+          created_at?: string
+          full_name?: string | null
+          id?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      tasks: {
+        Row: {
+          category: string
+          completed: boolean
+          created_at: string
+          due_date: string | null
+          id: string
+          name: string
+          priority: string
+          user_id: string
+        }
+        Insert: {
+          category?: string
+          completed?: boolean
+          created_at?: string
+          due_date?: string | null
+          id?: string
+          name: string
+          priority?: string
+          user_id: string
+        }
+        Update: {
+          category?: string
+          completed?: boolean
+          created_at?: string
+          due_date?: string | null
+          id?: string
+          name?: string
+          priority?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
