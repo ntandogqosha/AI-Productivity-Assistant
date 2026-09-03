@@ -38,7 +38,7 @@ export const Route = createFileRoute("/_authenticated/email-generator")({
       },
     ],
   }),
-  component: EmailGenerator;
+  component: EmailGenerator,
 });
 
 const ACCENT = "#2563EB";
