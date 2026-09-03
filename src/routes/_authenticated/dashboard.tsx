@@ -56,7 +56,7 @@ function Dashboard() {
   return (
     <div className="mx-auto max-w-6xl">
       <h1 className="font-display text-3xl font-semibold">
-        Hi {name ? name.split(" ")[0] : "there"} 👋
+        Hi {name ? name.split(" ")[0] : "there"}
       </h1>
       <p className="mt-1 text-sm text-muted-foreground">
         Here's your workspace at a glance. Pick a quick action to get moving.
