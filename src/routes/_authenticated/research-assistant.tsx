@@ -45,7 +45,7 @@ function ResearchAssistant() {
   const [generationId, setGenerationId] = useState<string | null>(null);
 
   async function run() {
-    if (topic.trim().length < 3) return toast.error("Enter a topic or link to research.");
+    if (topic.trim().length < 3) { toast.error("Enter a topic or link to research."); return; }
     setLoading(true);
     try {
       const result = await generate({
@@ -66,7 +66,7 @@ function ResearchAssistant() {
   }
 
   async function simplify() {
-    if (!output) return toast.error("Run a research brief first.");
+    if (!output) { toast.error("Run a research brief first."); return; }
     setSimplifying(true);
     try {
       const result = await generate({

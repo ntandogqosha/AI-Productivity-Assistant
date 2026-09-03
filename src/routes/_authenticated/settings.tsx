@@ -39,18 +39,18 @@ function SettingsPage() {
   }, []);
 
   async function save() {
-    if (fullName.trim().length < 2) return toast.error("Please enter your full name.");
+    if (fullName.trim().length < 2) { toast.error("Please enter your full name."); return; }
     setSaving(true);
     const { data } = await supabase.auth.getUser();
     if (!data.user) {
       setSaving(false);
-      return toast.error("Your session expired. Please sign in again.");
+      { toast.error("Your session expired. Please sign in again."); return; }
     }
     const { error } = await supabase
       .from("profiles")
       .upsert({ id: data.user.id, full_name: fullName.trim(), updated_at: new Date().toISOString() });
     setSaving(false);
-    if (error) return toast.error("Could not save your profile. Please try again.");
+    if (error) { toast.error("Could not save your profile. Please try again."); return; }
     toast.success("Profile updated");
   }
 

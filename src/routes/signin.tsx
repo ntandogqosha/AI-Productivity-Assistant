@@ -34,8 +34,8 @@ function SignIn() {
 
   async function onSubmit(e: React.FormEvent) {
     e.preventDefault();
-    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return toast.error("Enter a valid email address.");
-    if (!password) return toast.error("Enter your password.");
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { toast.error("Enter a valid email address."); return; }
+    if (!password) { toast.error("Enter your password."); return; }
 
     setLoading(true);
     const { error } = await supabase.auth.signInWithPassword({ email: email.trim(), password });

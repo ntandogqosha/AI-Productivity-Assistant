@@ -76,9 +76,9 @@ function TaskPlanner() {
   });
 
   async function addTask() {
-    if (name.trim().length < 2) return toast.error("Give your task a name.");
+    if (name.trim().length < 2) { toast.error("Give your task a name."); return; }
     const { data: user } = await supabase.auth.getUser();
-    if (!user.user) return toast.error("Your session expired. Please sign in again.");
+    if (!user.user) { toast.error("Your session expired. Please sign in again."); return; }
     const { error } = await supabase.from("tasks").insert({
       user_id: user.user.id,
       name: name.trim(),
@@ -86,7 +86,7 @@ function TaskPlanner() {
       category,
       due_date: dueDate || null,
     });
-    if (error) return toast.error("Could not add the task. Please try again.");
+    if (error) { toast.error("Could not add the task. Please try again."); return; }
     setName("");
     setDueDate("");
     queryClient.invalidateQueries({ queryKey: ["tasks"] });
@@ -107,7 +107,7 @@ function TaskPlanner() {
 
   async function makePlan() {
     const open = tasks.filter((t) => !t.completed);
-    if (open.length === 0) return toast.error("Add at least one open task first.");
+    if (open.length === 0) { toast.error("Add at least one open task first."); return; }
     setLoading(true);
     try {
       const result = await generate({

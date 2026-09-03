@@ -44,7 +44,7 @@ function MeetingSummarizer() {
 
   async function run() {
     if (notes.trim().length < 30) {
-      return toast.error("Paste a bit more of your notes (at least 30 characters).");
+      { toast.error("Paste a bit more of your notes (at least 30 characters)."); return; }
     }
     setLoading(true);
     try {

@@ -55,9 +55,9 @@ function EmailGenerator() {
   const [generationId, setGenerationId] = useState<string | null>(null);
 
   async function run() {
-    if (!recipient.trim()) return toast.error("Who is this email for?");
-    if (!subject.trim()) return toast.error("Add a subject line.");
-    if (points.trim().length < 10) return toast.error("Add a few key points (at least 10 characters).");
+    if (!recipient.trim()) { toast.error("Who is this email for?"); return; }
+    if (!subject.trim()) { toast.error("Add a subject line."); return; }
+    if (points.trim().length < 10) { toast.error("Add a few key points (at least 10 characters)."); return; }
 
     setLoading(true);
     try {

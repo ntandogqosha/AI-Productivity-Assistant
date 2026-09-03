@@ -59,7 +59,7 @@ function ChatAssistant() {
   async function send(text: string) {
     const trimmed = text.trim();
     if (!trimmed) return;
-    if (trimmed.length > 4000) return toast.error("That message is a bit too long.");
+    if (trimmed.length > 4000) { toast.error("That message is a bit too long."); return; }
 
     const history = messages
       .slice(-12)

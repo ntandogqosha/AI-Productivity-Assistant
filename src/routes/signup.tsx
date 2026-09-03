@@ -37,10 +37,10 @@ function SignUp() {
 
   async function onSubmit(e: React.FormEvent) {
     e.preventDefault();
-    if (fullName.trim().length < 2) return toast.error("Please enter your full name.");
-    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return toast.error("Enter a valid email address.");
-    if (password.length < 8) return toast.error("Password must be at least 8 characters.");
-    if (password !== confirm) return toast.error("Passwords do not match.");
+    if (fullName.trim().length < 2) { toast.error("Please enter your full name."); return; }
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { toast.error("Enter a valid email address."); return; }
+    if (password.length < 8) { toast.error("Password must be at least 8 characters."); return; }
+    if (password !== confirm) { toast.error("Passwords do not match."); return; }
 
     setLoading(true);
     const { data, error } = await supabase.auth.signUp({
